@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Post Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .post-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        .comment-card {
+            border-left: 4px solid #667eea;
+            background: #f8f9fa;
+        }
+        .comment-form {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        .btn-submit {
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .back-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 25px;
+            padding: 8px 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/static">
+                <i class="fas fa-blog me-2"></i>My Blog
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/static">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Post Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Back Button -->
+                <div class="mb-4">
+                    <a href="/static" class="back-btn">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </a>
+                </div>
+
+                <!-- Post Header -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h1 class="card-title display-5 fw-bold mb-3">Getting Started with Spring Boot</h1>
+                        <div class="post-meta text-muted mb-3">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            <span>December 15, 2024</span>
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-user me-1"></i>
+                            <span>Author 1</span>
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-comments me-1"></i>
+                            <span>3 comments</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Content -->
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <div class="post-content">
+                            <p>Spring Boot is a powerful framework that makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". In this comprehensive guide, we'll explore the fundamentals of Spring Boot, its key features, and how to build robust web applications.</p>
+                            
+                            <h3>Key Features of Spring Boot</h3>
+                            <p>Spring Boot comes with several key features that make it a popular choice for Java developers:</p>
+                            <ul>
+                                <li><strong>Auto-configuration</strong>: Spring Boot automatically configures your application based on the dependencies you include.</li>
+                                <li><strong>Starter Dependencies</strong>: Pre-configured dependency descriptors that simplify your build configuration.</li>
+                                <li><strong>Embedded Server</strong>: Built-in Tomcat, Jetty, or Undertow servers.</li>
+                                <li><strong>Production-ready Features</strong>: Metrics, health checks, and externalized configuration.</li>
+                            </ul>
+
+                            <h3>Creating Your First Spring Boot Application</h3>
+                            <p>To get started, you can use the Spring Initializr at start.spring.io or create a new project in your IDE. The basic structure includes:</p>
+                            <ul>
+                                <li><code>@SpringBootApplication</code> annotation</li>
+                                <li>Main method with <code>SpringApplication.run()</code></li>
+                                <li>Application properties for configuration</li>
+                            </ul>
+
+                            <p>Spring Boot's convention-over-configuration approach means you can get a web application running with minimal code. The framework handles most of the boilerplate configuration, allowing you to focus on your business logic.</p>
+
+                            <p>Whether you're building REST APIs, web applications, or microservices, Spring Boot provides the tools and conventions to help you succeed.</p>
+
+                            <h3>Best Practices</h3>
+                            <p>When working with Spring Boot, consider these best practices:</p>
+                            <ol>
+                                <li>Use proper package structure</li>
+                                <li>Leverage Spring Boot's auto-configuration</li>
+                                <li>Use profiles for different environments</li>
+                                <li>Implement proper error handling</li>
+                                <li>Write comprehensive tests</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="mb-0">
+                            <i class="fas fa-comments me-2"></i>
+                            Comments (3)
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="comment-card p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <strong>Alice Johnson</strong>
+                                <small class="text-muted">Dec 14, 2024 10:30</small>
+                            </div>
+                            <p class="mb-0">Great article! This really helped me understand Spring Boot basics. Looking forward to more tutorials!</p>
+                        </div>
+
+                        <div class="comment-card p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <strong>Bob Wilson</strong>
+                                <small class="text-muted">Dec 13, 2024 15:45</small>
+                            </div>
+                            <p class="mb-0">Thanks for sharing! The auto-configuration feature is really impressive. It saved me so much time.</p>
+                        </div>
+
+                        <div class="comment-card p-3 mb-3">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <strong>Carol Davis</strong>
+                                <small class="text-muted">Dec 12, 2024 09:15</small>
+                            </div>
+                            <p class="mb-0">Excellent explanation! The examples are very clear and helpful. Can't wait to try this out.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Comment Form -->
+                <div class="comment-form">
+                    <h4 class="mb-4">
+                        <i class="fas fa-plus-circle me-2"></i>Add a Comment
+                    </h4>
+                    <form>
+                        <div class="mb-3">
+                            <label for="authorName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="authorName" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="content" class="form-label">Comment</label>
+                            <textarea class="form-control" id="content" rows="4" placeholder="Write your comment here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">
+                            <i class="fas fa-paper-plane me-2"></i>Post Comment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-blog me-2"></i>My Blog</h5>
+                    <p>Sharing knowledge and insights about technology and programming.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 My Blog. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
