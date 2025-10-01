@@ -13,7 +13,7 @@ public class Day1_2_Controller {
         return "day1_2/index";
     }
 
-    @GetMapping("/post/{id}")
+    @GetMapping("/day1_2/post/{id}")
     public String readDetails(Model model) {
         model.addAttribute("pageTitle", "Details Page");
         return "day1_2/post-detail";

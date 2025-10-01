@@ -15,10 +15,13 @@ public class UserService {
     }
 
     public User addUser(User user) {
+        if(userRepository.findByUsername(user.getUsername()) != null) {
+            return null;
+        }
         return userRepository.saveAndFlush(user);
     }
 
-    public User checkUser(String username , String password) {
-        return userRepository.findByUsernameAndPasswordHash(username, password);
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }
