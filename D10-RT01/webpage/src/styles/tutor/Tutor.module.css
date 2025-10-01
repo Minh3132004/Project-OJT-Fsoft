@@ -1,0 +1,320 @@
+/* Provided styles */
+.sectionHeader {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-position: 50%;
+    height: 400px;
+    margin: 0 -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerInfo {
+    text-align: center;
+}
+
+.headerInfo ul {
+    list-style: none;
+}
+
+.headerInfo p {
+    font-size: 60px;
+    font-weight: 500;
+    color: #eff5f6;
+    margin-bottom: 20px;
+}
+
+.breadcrumbItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    color: #fafafa;
+    padding-left: 0;
+}
+
+.breadcrumbItems li a {
+    color: #fafafa;
+    text-decoration: none;
+}
+
+.breadcrumbItems li a:hover {
+    text-decoration: underline;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.05);
+}
+
+.tutorPageContainer {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.searchContainer {
+    flex: 1;
+    margin-top: 20px;
+    min-width: 250px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.searchContainer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.formGroup label:hover {
+    color: #d1752d;
+}
+
+.inputField {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inputField:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px #EC9047FF;
+    outline: none;
+}
+
+.searchButton {
+    background-color: var(--primary-color);
+    color: #fafafa;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.buttonHover:hover {
+    transform: scale(1.05);
+    background-color: #d1752d;
+}
+
+.tutorContainer {
+    flex: 3;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.tutorContainer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tutorGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.tutorGridItem {
+    display: flex;
+}
+
+.tutorCard {
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardHover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tutorCardTitle {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.tutorCardTitle:hover {
+    color: #d1752d;
+}
+
+.tutorCardText {
+    margin: 5px 0;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.tutorBtnGroup {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tutorBtn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #fafafa;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.noResults {
+    color: #e53935;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.loadingMessage {
+    text-align: center;
+    padding: 20px;
+    background-color: #e6f3ff;
+    color: var(--primary-color);
+    border-radius: 4px;
+    margin: 20px 0;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.errorMessage {
+    text-align: center;
+    padding: 20px;
+    background-color: #f2dede;
+    color: #a94442;
+    border-radius: 4px;
+    margin: 20px 0;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* New styles for Teacher Dashboard button */
+.teacherButtonContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-bottom: 20px;
+}
+
+.teacherButton {
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #fafafa;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.teacherButton:hover {
+    transform: scale(1.05);
+    background-color: #d1752d;
+}
+
+/* Keyframe Animations */
+@keyframes slideIn {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tutorPageContainer {
+        flex-direction: column;
+    }
+
+    .searchContainer {
+        min-width: 100%;
+        animation: slideIn 0.5s ease-out forwards;
+    }
+
+    .tutorGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .tutorCard {
+        animation: none; /* Disable AOS animations on mobile for performance */
+    }
+
+    .teacherButtonContainer {
+        text-align: center;
+    }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .searchContainer,
+    .tutorCard,
+    .noResults,
+    .loadingMessage,
+    .errorMessage,
+    .teacherButton {
+        animation: none;
+        transform: none;
+        opacity: 1;
+    }
+
+    .tutorBtn,
+    .searchButton,
+    .tutorCard,
+    .tutorCardTitle,
+    .inputField,
+    .teacherButton {
+        transition: none;
+    }
+}

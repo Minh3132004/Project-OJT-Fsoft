@@ -1,0 +1,18 @@
+body {
+  padding: 20px;
+  background-color: #f4eee5;
+}
+.table-container {
+  max-width: 1200px;
+  margin: auto;
+}
+.error-message {
+  color: red;
+  display: none;
+  margin-top: 10px;
+}
+.success-message {
+  color: green;
+  display: none;
+  margin-top: 10px;
+}
