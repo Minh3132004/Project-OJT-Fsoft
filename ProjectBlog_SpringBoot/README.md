@@ -16,7 +16,7 @@ A comprehensive personal blog platform built with Spring Boot, featuring user au
 - **Dashboard**: Overview of blog statistics and recent posts
 - **Post Management**: Create, edit, and delete blog posts
 - **Comment Management**: View and delete inappropriate comments
-- **User-Friendly Interface**: Intuitive admin panel
+  - **User-Friendly Interface**: Intuitive admin panel
 
 ## Technology Stack
 

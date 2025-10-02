@@ -93,6 +93,23 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
         }
+        .comment-item {
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        .comment-item:hover {
+            background-color: #f8f9fa !important;
+            transform: translateX(5px);
+        }
+        .comments-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .comments-section {
+            border-top: 1px solid #e9ecef;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -186,25 +203,68 @@
                 <div class="col-lg-8 mx-auto">
                     <h2 class="text-center mb-5">Latest Posts</h2>
                     <div class="row" th:if="${posts}!=null and ${!posts.isEmpty()}">
-                        <div class="col-md-6 mb-4" th:each="p : ${posts}">
+                        <div class="col-md-6 mb-4" th:each="post : ${posts}">
                             <div class="card h-100">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">
-                                        <a th:href="@{'/posts/' + ${p.id}}" class="text-decoration-none" th:text="${p.title}">Post title</a>
+                                        <a th:href="@{'/posts/' + ${post.id}}" class="text-decoration-none" th:text="${post.title}">Post title</a>
                                     </h5>
-                                    <p class="card-text flex-grow-1" th:text="${#strings.abbreviate(p.content, 140)}">Post content preview</p>
+                                    <p class="card-text flex-grow-1" th:text="${#strings.abbreviate(post.content, 140)}">Post content preview</p>
                                     <div class="text-muted small mb-3">
-                                        <span th:text="${#temporals.format(p.createdAt, 'dd/MM/yyyy HH:mm')}">date</span>
+                                        <span th:text="${#temporals.format(post.createdAt, 'dd/MM/yyyy HH:mm')}">date</span>
                                     </div>
-                                    <div class="d-flex gap-2 mt-auto" th:if="${currentUserId}!=null and ${currentUserId} == ${p.authorId}">
-                                        <a class="btn btn-sm btn-outline-primary" th:href="@{'/posts/' + ${p.id} + '/edit'}">
-                                            <i class="fas fa-edit me-1"></i>Edit
+                                    
+                                    <!-- Comments Section -->
+                                    <div class="mt-3">
+                                        <h6 class="text-muted mb-2">
+                                            <i class="fas fa-comments me-1"></i>
+                                            Comments (<span th:text="${#lists.size(post.comments)}">0</span>)
+                                        </h6>
+                                        
+                                        <!-- Hiển thị comments -->
+                                        <div class="comments-list" th:if="${!post.comments.isEmpty()}">
+                                            <div class="comment-item mb-2 p-2 bg-light rounded" 
+                                                 th:each="comment, commentStat : ${post.comments}"
+                                                 th:if="${commentStat.index < 3}">
+                                                <div>
+                                                    <strong class="text-primary" th:text="${comment.authorName}">Author</strong>
+                                                    <small class="text-muted ms-2" th:text="${#temporals.format(comment.createdAt, 'dd/MM HH:mm')}">date</small>
+                                                </div>
+                                                <p class="mb-0 mt-1" th:text="${comment.content}">Comment content</p>
+                                            </div>
+                                            
+                                            <!-- Link xem tất cả nếu có nhiều hơn 3 comments -->
+                                            <div class="text-center mt-2" th:if="${#lists.size(post.comments) > 3}">
+                                                <a th:href="@{'/posts/' + ${post.id}}" class="btn btn-sm btn-link">
+                                                    <i class="fas fa-eye me-1"></i>
+                                                    View all <span th:text="${#lists.size(post.comments)}">0</span> comments
+                                                </a>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Không có comments -->
+                                        <div class="text-muted small" th:if="${post.comments.isEmpty()}">
+                                            <i class="fas fa-comment-slash me-1"></i>No comments yet. Be the first to comment!
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-2 mt-3">
+                                        <!-- Comment button -->
+                                        <a class="btn btn-sm btn-outline-success" th:href="@{'/comments/' + ${post.id}}">
+                                            <i class="fas fa-comment me-1"></i>Add Comment
                                         </a>
-                                        <form th:action="@{'/posts/' + ${p.id} + '/delete'}" method="post" onsubmit="return confirm('Delete this post?');">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger">
-                                                <i class="fas fa-trash me-1"></i>Delete
-                                            </button>
-                                        </form>
+                                        
+                                        <!-- Edit/Delete buttons -->
+                                        <div th:if="${currentUserId}!=null and ${currentUserId} == ${post.authorId}" class="d-flex gap-2">
+                                            <a class="btn btn-sm btn-outline-primary" th:href="@{'/posts/' + ${post.id} + '/edit'}">
+                                                <i class="fas fa-edit me-1"></i>Edit
+                                            </a>
+                                            <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post" onsubmit="return confirm('Delete this post?');">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-trash me-1"></i>Delete
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -291,7 +351,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h5><i class="fas fa-blog me-2"></i>Our Blog</h5>
-                    <p>A modern blog platform demonstrating best practices in web development and providing a platform for sharing knowledge and insights.</p>
+                    <p>Welcome to our blog where you can share your thoughts and ideas with the community.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <h5>Connect With Us</h5>

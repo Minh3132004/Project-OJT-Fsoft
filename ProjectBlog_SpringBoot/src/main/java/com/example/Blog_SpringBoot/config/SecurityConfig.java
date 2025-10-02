@@ -1,4 +1,4 @@
-package com.example.Blog_SpringBoot.Config;
+package com.example.Blog_SpringBoot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,9 +16,11 @@ public class SecurityConfig {
             .authorizeHttpRequests(authz -> authz
                 .requestMatchers(HttpMethod.GET, "/posts/new", "/posts/*/edit").authenticated()
 
+                .requestMatchers(HttpMethod.GET, "/posts/*").permitAll()
+
                 .requestMatchers("/api/posts/**").permitAll()
 
-                .requestMatchers("/", "/posts/*", "/login", "/css/**", "/js/**", "/images/**").permitAll()
+                .requestMatchers("/",   "/comments/**", "/login", "/css/**", "/js/**", "/images/**").permitAll()
 
                 .requestMatchers("/register").permitAll()
 
