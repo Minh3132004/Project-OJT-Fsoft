@@ -65,16 +65,8 @@ public class PostController {
             return "redirect:/";
         }
         Post post = optionalPost.get();
+        
         model.addAttribute("post", post);
-
-        if (authentication != null && authentication.isAuthenticated() &&
-                authentication.getName() != null && !"anonymousUser".equals(authentication.getName())) {
-            User current = userService.findByUsername(authentication.getName());
-            if (current != null) {
-                model.addAttribute("currentUserId", current.getId());
-            }
-        }
-
         return "posts/detail";
     }
 
@@ -88,7 +80,12 @@ public class PostController {
         }
         Post post = optionalPost.get();
 
-        String username = authentication != null ? authentication.getName() : null;
+        String username;
+        if (authentication != null) {
+            username = authentication.getName();
+        } else {
+            username = null;
+        }
         if (username == null) {
             return "redirect:/login";
         }
@@ -113,7 +110,12 @@ public class PostController {
         }
         Post existing = optionalPost.get();
 
-        String username = authentication != null ? authentication.getName() : null;
+        String username;
+        if (authentication != null) {
+            username = authentication.getName();
+        } else {
+            username = null;
+        }
         if (username == null) {
             return "redirect:/login";
         }
@@ -143,7 +145,12 @@ public class PostController {
         }
         Post post = optionalPost.get();
 
-        String username = authentication != null ? authentication.getName() : null;
+        String username;
+        if (authentication != null) {
+            username = authentication.getName();
+        } else {
+            username = null;
+        }
         if (username == null) {
             return "redirect:/login";
         }

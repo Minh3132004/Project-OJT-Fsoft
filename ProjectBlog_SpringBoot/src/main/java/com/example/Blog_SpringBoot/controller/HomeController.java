@@ -23,7 +23,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model, Authentication authentication) {
-        model.addAttribute("pageTitle", "Blog - Home");
         model.addAttribute("posts", postService.getAllPosts());
 
         if (authentication != null && authentication.isAuthenticated() &&

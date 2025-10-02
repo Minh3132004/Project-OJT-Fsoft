@@ -9,18 +9,19 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
-
                 .requestMatchers(HttpMethod.GET, "/posts/new", "/posts/*/edit").authenticated()
+
+                .requestMatchers("/api/posts/**").permitAll()
 
                 .requestMatchers("/", "/posts/*", "/login", "/css/**", "/js/**", "/images/**").permitAll()
 
                 .requestMatchers("/register").permitAll()
+
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
